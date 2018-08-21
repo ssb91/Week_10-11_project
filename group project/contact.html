@@ -7,6 +7,41 @@
 
     <link rel="stylesheet" href="css/login.css" >
 
+	
+	<script>
+
+function ValidateEmail(inputEmail)
+{
+var emailformat = /\S+@\S+\.\S+/;
+if(inputEmail.value.match(emailformat))
+{
+document.emailto.formEmail.focus();
+return true;
+}
+else
+{
+alert("Please enter an email address in the correct format.");
+document.emailto.formEmail.focus();
+return false;
+}
+}
+
+function validateForm() {
+    var nameformat = document.forms["emailto"]["formName"].value;
+    var subjectformat = document.forms["emailto"]["formSubject"].value;
+    var commentsformat = document.forms["emailto"]["formComments"].value;
+
+    if (nameformat == "" || subjectformat == "" || commentsformat == "") {
+        alert("Please enter your details fully.");
+        return false;
+    }
+    
+}
+
+
+</script>
+
+
 </head>
 <body>
 
@@ -28,84 +63,17 @@ M12 3AB<br>
 
 <h5>Email</h5>
 
-<button onclick="document.getElementById('clickaction').style.display='block'" style="width:auto;">Email</button>
+<form name="emailto" action="/action_page.php"
+onsubmit="return ValidateEmail(document.emailto.formEmail) &&  validateForm() " method="post">
 
 
-
-<div id="clickaction" class="modal">
-  
-  <div class="modal-content animate" action="/action_page.php">
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('clickaction').style.display='none'" class="close" title="Close Modal">&times;</span>
-      <img src="https://www.raisethebar.co.uk/wp-content/uploads/2018/01/qa-logo.jpg" style="width:20%">
-    </div>
-
-    <div class="container">
-      
-	  <form name="emailto" action="/action_page.php"
-onsubmit="return validateForm() && ValidateEmail(document.emailto.formEntryEmail)" method="post">
-
-
-Name <input type="text" name="formEntryName"><br>
-Subject <input type="text" name="formEntrySubject"><br>
-E-mail <input type='text' name='formEntryEmail'/><br>
+Name <input type="text" name="formName"><br>
+Subject <input type="text" name="formSubject"><br>
+E-mail <input type='text' name='formEmail'/><br>
+Comments <input type="text" name="formComments"><br>
 <input type="submit" name="submit" value="submit">
 
 </form>
-
-  <script>
-
-
-/* function below is to validate email in format something@something.something"*/
-function ValidateEmail(inputEmail)
-{
-var emailformat = /\S+@\S+\.\S+/;
-if(inputEmail.value.match(emailformat))
-{
-document.emailto.formEntryEmail.focus();
-return true;
-}
-else
-{
-alert("Please enter an email address in the correct format.");
-document.emailto.formEntryEmail.focus();
-return false;
-}
-}
-
-/* function below prevents submitting an empty form"*/
-
-
-function validateForm() {
-    var x = document.forms["emailto"]["formEntryName"].value;
-    var y = document.forms["emailto"]["formEntrySubject"].value;
-    var z = document.forms["emailto"]["formEntryEmail"].value;
-    if (x == "" || y == "" || z == "") {
-        alert("Please enter your details fully.");
-        return false;
-    }
-    
-}
-
-
-</script>
-
-
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1"></div>
-
-  
-
-  </div>
-  
-  
-
-</div>
-
-
-
-
 
 
 </div>
