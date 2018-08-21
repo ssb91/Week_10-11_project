@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="css/style.css" >
+
+    <link rel="stylesheet" href="css/login.css" >
+
+</head>
+<body>
+
+<div class="main" style="padding:5%">
+
+      <h1>Contact</h1>
+
+Contact us for questions and comments.
+
+<h5>Address</h5>
+
+2 Somewhere Road<br>
+Manchester<br>
+M12 3AB<br>
+
+<h5>Phone</h5>
+
+0161 123 4567
+
+<h5>Email</h5>
+
+<button onclick="document.getElementById('clickaction').style.display='block'" style="width:auto;">Email</button>
+
+
+
+<div id="clickaction" class="modal">
+  
+  <div class="modal-content animate" action="/action_page.php">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('clickaction').style.display='none'" class="close" title="Close Modal">&times;</span>
+      <img src="https://www.raisethebar.co.uk/wp-content/uploads/2018/01/qa-logo.jpg" style="width:20%">
+    </div>
+
+    <div class="container">
+      
+	  <form name="emailto" action="/action_page.php"
+onsubmit="return validateForm() && ValidateEmail(document.emailto.formEntryEmail)" method="post">
+
+
+Name <input type="text" name="formEntryName"><br>
+Subject <input type="text" name="formEntrySubject"><br>
+E-mail <input type='text' name='formEntryEmail'/><br>
+<input type="submit" name="submit" value="submit">
+
+</form>
+
+  <script>
+
+
+/* function below is to validate email in format something@something.something"*/
+function ValidateEmail(inputEmail)
+{
+var emailformat = /\S+@\S+\.\S+/;
+if(inputEmail.value.match(emailformat))
+{
+document.emailto.formEntryEmail.focus();
+return true;
+}
+else
+{
+alert("Please enter an email address in the correct format.");
+document.emailto.formEntryEmail.focus();
+return false;
+}
+}
+
+/* function below prevents submitting an empty form"*/
+
+
+function validateForm() {
+    var x = document.forms["emailto"]["formEntryName"].value;
+    var y = document.forms["emailto"]["formEntrySubject"].value;
+    var z = document.forms["emailto"]["formEntryEmail"].value;
+    if (x == "" || y == "" || z == "") {
+        alert("Please enter your details fully.");
+        return false;
+    }
+    
+}
+
+
+</script>
+
+
+    </div>
+
+    <div class="container" style="background-color:#f1f1f1"></div>
+
+  
+
+  </div>
+  
+  
+
+</div>
+
+
+
+
+
+
+</div>
+</body>
+</html>
